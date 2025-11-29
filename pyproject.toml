@@ -1,0 +1,17 @@
+[project]
+name = "admissions-triage-assistant"
+version = "0.1.0"
+description = "AI-powered admissions email triage tool"
+requires-python = ">=3.9"
+dependencies = [
+    "streamlit>=1.38.0",
+    "pandas>=2.2.2", 
+    "openai>=1.51.2",
+    "python-dotenv>=1.0.1",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "black>=24.0.0",
+    "ruff>=0.5.0",
+]
