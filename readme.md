@@ -1,5 +1,5 @@
 Clone & install
-git clone 
+git clone https://github.com/Nandhini-kalyan/Admission_Email_Triage.git
 cd admissions_triage
 uv sync #install uv for easier and  quicker package management
 
