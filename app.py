@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from openai import OpenAI
+import openai
 import os
 import json
 from datetime import datetime
@@ -12,9 +12,9 @@ st.set_page_config(page_title="Admissions Email Triage", layout="wide")
 # OpenAI setup
 from dotenv import load_dotenv
 load_dotenv(override=True)
-google_api_key = os.getenv('GOOGLE_API_KEY')
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
-
+MODEL = "gpt-4o-mini"
 
 @st.cache_data
 def load_sample_data():
@@ -47,9 +47,8 @@ def classify_email(email_text, subject):
     """
     
     try:
-        gemini = OpenAI(api_key=google_api_key, base_url="https://generativelanguage.googleapis.com/v1beta/openai/")
-        MODEL = "gemini-2.0-flash"
-        response = gemini.chat.completions.create(
+        
+        response = openai.chat.completions.create(
             model=MODEL,
             messages=[
                 {"role": "system", "content": "You are an expert school admissions assistant. Always return valid JSON matching the exact schema provided. Never add extra fields."},
